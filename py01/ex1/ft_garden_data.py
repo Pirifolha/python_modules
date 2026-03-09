@@ -6,11 +6,9 @@
 #  By: misousa <misousa@student.42lisboa.com>    +#+  +:+       +#+         #
 #                                              +#+#+#+#+#+   +#+            #
 #  Created: 2026/03/06 16:11:39 by misousa         #+#    #+#               #
-#  Updated: 2026/03/06 18:29:35 by misousa         ###   ########.fr        #
+#  Updated: 2026/03/09 17:11:08 by misousa         ###   ########.fr        #
 #                                                                           #
 # ************************************************************************* #
-
-#ft_garden_data.py
 
 class Plant:
     def __init__(self, name, height, age) -> None:
