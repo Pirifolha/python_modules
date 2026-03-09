@@ -1,35 +1,35 @@
 # ************************************************************************* #
 #                                                                           #
 #                                                      :::      ::::::::    #
-#  ft_garden_data.py                                 :+:      :+:    :+:    #
+#  ft_plant_growth.py                                :+:      :+:    :+:    #
 #                                                  +:+ +:+         +:+      #
 #  By: misousa <misousa@student.42lisboa.com>    +#+  +:+       +#+         #
 #                                              +#+#+#+#+#+   +#+            #
-#  Created: 2026/03/06 16:11:39 by misousa         #+#    #+#               #
-#  Updated: 2026/03/06 18:29:35 by misousa         ###   ########.fr        #
+#  Created: 2026/03/06 17:15:53 by misousa         #+#    #+#               #
+#  Updated: 2026/03/06 18:01:57 by misousa         ###   ########.fr        #
 #                                                                           #
 # ************************************************************************* #
 
-#ft_garden_data.py
+from ..ex1.ft_garden_data import *
 
-class Plant:
-    def __init__(self, name, height, age) -> None:
-        self.name = name
-        self.height = height
-        self.age = age
+def grow() -> None:
+    rose.height += 2
 
+def age() -> None:
+    rose.age += 1
 
-rose = Plant("Rose", 25, 30)
-sunflower = Plant("Sunflower", 80, 45)
-cactus = Plant("Cactus", 15, 120)
-
+def get_info() -> None:
+    print(f"{rose.name}: {rose.height}cm, {rose.age} days old")
 
 def main() -> None:
-    print(f"{rose.name}: {rose.height}cm, {rose.age} days old")
-    print(f"{sunflower.name}: {sunflower.height}cm, {sunflower.age} days old")
-    print(f"{cactus.name}: {cactus.height}cm, {cactus.age} days old")
-
+    day = 1
+    while day <= 7:
+        print(f"=== Day {day} ===")
+        get_info()
+        grow()
+        age()
+        day += 1
+    print(f"Growth this week: +{2*6}cm")
 
 if __name__ == "__main__":
-    print("=== Garden Plant Registry ===")
     main()
