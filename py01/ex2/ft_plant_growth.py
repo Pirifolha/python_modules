@@ -3,18 +3,14 @@
 #                                                      :::      ::::::::    #
 #  ft_plant_growth.py                                :+:      :+:    :+:    #
 #                                                  +:+ +:+         +:+      #
-#  By: misousa <misousa@student.42lisboa.com>    +#+  +:+       +#+         #
+#  By: misousa <misousa@student.42.fr>           +#+  +:+       +#+         #
 #                                              +#+#+#+#+#+   +#+            #
 #  Created: 2026/03/06 17:15:53 by misousa         #+#    #+#               #
-#  Updated: 2026/03/09 17:27:26 by misousa         ###   ########.fr        #
+#  Updated: 2026/03/10 18:10:40 by misousa         ###   ########.fr        #
 #                                                                           #
 # ************************************************************************* #
 
-class Plant:
-    def __init__(self, name, height, age) -> None:
-        self.name = name
-        self.height = height
-        self.age = age
+from ..ex1.ft_garden_data import Plant
 
 
 rose = Plant("Rose", 25, 30)
