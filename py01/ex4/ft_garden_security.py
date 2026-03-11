@@ -1,15 +1,16 @@
 #!/usr/bin/env python3
 
+
 class SecurePlant:
     def __init__(self, name) -> None:
-        self.name = name
-        self.__height = 0
-        self.__age = 0
+        self.name: str = name
+        self.__height: int = 0
+        self.__age: int = 0
 
-    def get_age(self):
+    def get_age(self) -> int:
         return self.__age
 
-    def get_height(self):
+    def get_height(self) -> int:
         return self.__height
 
     def set_age(self, age) -> None:
@@ -27,18 +28,18 @@ class SecurePlant:
             print("Security: Negative height rejected")
 
 
-rose = SecurePlant("Rose")
-rose.set_age(-81)
-rose.set_height(0)
-
-
 def main():
+    rose = SecurePlant("Rose")
+    rose.set_age(-81)
+    rose.set_height(0)
     if rose.get_age() > 0 and rose.get_height() > 0:
         print(f"Plant created: {rose.name}")
         print(f"Height updated: {rose.get_height()}cm [OK]")
         print(f"Age updated: {rose.get_age()} days [OK]")
-        print(f"Current plant: {rose.name} "
-              f"({rose.get_height()}cm, {rose.get_age()} days)")
+        print(
+            f"Current plant: {rose.name} "
+            f"({rose.get_height()}cm, {rose.get_age()} days)"
+        )
 
 
 if __name__ == "__main__":

@@ -2,15 +2,15 @@
 
 class Plant:
     def __init__(self, name, height, age) -> None:
-        self.name = name
-        self.height = height
-        self.age = age
+        self.name: str = name
+        self.height: int = height
+        self.age: int = age
 
 
 class Flower(Plant):
     def __init__(self, name, height, age, color) -> None:
         super().__init__(name, height, age)
-        self.color = color
+        self.color: str = color
 
     def bloom(self):
         print(
@@ -23,7 +23,7 @@ class Flower(Plant):
 class Tree(Plant):
     def __init__(self, name, height, age, diameter) -> None:
         super().__init__(name, height, age)
-        self.diameter = diameter
+        self.diameter: int = diameter
 
     def produce_shade(self):
         shade = self.height * self.diameter / 100
@@ -37,8 +37,8 @@ class Tree(Plant):
 class Vegetable(Plant):
     def __init__(self, name, height, age, season, nutrient) -> None:
         super().__init__(name, height, age)
-        self.season = season
-        self.nutrient = nutrient
+        self.season: str = season
+        self.nutrient: str = nutrient
 
     def print_veg(self):
         print(

@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 
 def main() -> None:
-    height = "25cm"
-    plant = "Rose"
-    age = 30
+    height: int = 25
+    plant: str = "Rose"
+    age: int = 30
     print("Plant:", plant)
-    print("Height:", height)
-    print("Age:", age, "Days")
+    print(f"Height: {height}cm")
+    print(f"Age: {age} Days")
 
 
 if __name__ == "__main__":
