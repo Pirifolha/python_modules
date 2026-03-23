@@ -13,7 +13,7 @@ class Plant:
     def age_plant(self) -> None:
         self.age += 1
 
-    def get_info(self) -> None:
+    def show(self) -> None:
         print(f"{self.name}: {self.height}cm, {self.age} days old")
 
 
@@ -23,7 +23,7 @@ def main() -> None:
     growth: int = 1
     while day <= 7:
         print(f"=== Day {day} ===")
-        rose.get_info()
+        rose.show()
         rose.grow(growth)
         rose.age_plant()
         day += 1

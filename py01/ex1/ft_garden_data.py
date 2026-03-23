@@ -7,15 +7,18 @@ class Plant:
         self.height: int = height
         self.age: int = age
 
+    def show(self) -> None:
+        print(f"{self.name}: {self.height}cm, {self.age} days old")
+
 
 def main() -> None:
     rose = Plant("Rose", 25, 30)
     sunflower = Plant("Sunflower", 80, 45)
     cactus = Plant("Cactus", 15, 120)
 
-    print(f"{rose.name}: {rose.height}cm, {rose.age} days old")
-    print(f"{sunflower.name}: {sunflower.height}cm, {sunflower.age} days old")
-    print(f"{cactus.name}: {cactus.height}cm, {cactus.age} days old")
+    Plant.show(rose)
+    Plant.show(sunflower)
+    Plant.show(cactus)
 
 
 if __name__ == "__main__":
