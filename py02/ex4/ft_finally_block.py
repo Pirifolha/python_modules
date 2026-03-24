@@ -1,32 +1,32 @@
 #!/usr/bin/env python3
 
 
-class InvalidPlant(Exception):
-    pass
+class PlantError(Exception):
+    def __init__(self, message="Unknown garden error"):
+        super().__init__(message)
 
 
-def water_plants(plant_list: list) -> None:
+def water_plants(plant_name: list) -> None:
     print("Opening watering system")
     try:
-        for plant in plant_list:
-            if not plant:
-                raise InvalidPlant
+        for plant in plant_name:
+            if plant == plant.capitalize():
+                print(f"Watering {plant}: [OK]")
             else:
-                print(f"Watering {plant}")
-    except InvalidPlant as e:
-        print(f"Error: Cannot water {plant} - {type(e).__name__}!")
+                raise PlantError()
+    except PlantError as e:
+        print(f"Caught {type(e).__name__}: Invalid plant name to water: "
+              f"'{plant}'\n...ending tests and returning to main")
     finally:
         print("Closing watering system (cleanup)\n")
 
 
 def test_watering_system() -> None:
-    plant_list: list = ["tomato", "lettuce", "carrots"]
-    inv_plant_list: list = [None, "lettuce", "carrots"]
-    print("Testing normal watering...")
+    plant_list: list = ["Tomato", "Lettuce", "Carrots"]
+    inv_plant_list: list = ["Tomato", "Lettuce", "carrots"]
+    print("Testing valid plants...")
     water_plants(plant_list)
-    print("Watering completed successfully!\n")
-
-    print("Testing with error...")
+    print("Testing invalid plants...")
     water_plants(inv_plant_list)
 
 
