@@ -2,15 +2,18 @@
 
 
 class GardenError(Exception):
-    pass
+    def __init__(self, message="Unknown garden error"):
+        super().__init__(message)
 
 
 class PlantError(GardenError):
-    pass
+    def __init__(self, message="Unknown garden error"):
+        super().__init__(message)
 
 
 class WaterError(GardenError):
-    pass
+    def __init__(self, message="Unknown garden error"):
+        super().__init__(message)
 
 
 def water_tester() -> None:
@@ -18,7 +21,7 @@ def water_tester() -> None:
         water: int = 9
         print("Testing WaterError...")
         if water < 10:
-            raise WaterError
+            raise WaterError()
     except WaterError as e:
         print(f"Caught {type(e).__name__}: Not enough water in the tank!\n")
     else:
@@ -30,7 +33,7 @@ def plant_tester() -> None:
         age: int = 15
         print("Testing PlantError...")
         if age > 10:
-            raise PlantError
+            raise PlantError()
     except PlantError as e:
         print(f"Caught {type(e).__name__}: The tomato plant is wilting!\n")
     else:
@@ -43,7 +46,7 @@ def garden_tester() -> None:
         water = 12
         print("Testing catching all garden errors...")
         if age > 10 and water > 10:
-            raise GardenError
+            raise GardenError()
     except GardenError as e:
         print(f"Caught a {type(e).__name__}: The tomato plant is wilting!")
         print(f"Caught a {type(e).__name__}: Not enough water in the tank!\n")
