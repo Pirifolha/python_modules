@@ -3,7 +3,7 @@
 import sys
 
 
-def main():
+def main() -> None:
     program_name: str = sys.argv[0]
     args: int = len(sys.argv)
     if args == 1:

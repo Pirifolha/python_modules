@@ -3,7 +3,7 @@
 import sys
 
 
-def score_analytics():
+def score_analytics() -> None:
     scores: list[int] = []
     for arg in sys.argv[1:]:
         try:
