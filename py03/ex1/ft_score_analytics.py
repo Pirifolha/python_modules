@@ -5,14 +5,14 @@ import sys
 
 def score_analytics() -> None:
     scores: list[int] = []
+    print("=== Player Score Analytics ===")
     for arg in sys.argv[1:]:
         try:
             value = int(arg)
             scores.append(value)
         except ValueError:
             print(f"Invalid score: {arg}")
-            return
-    print("=== Player Score Analytics ===")
+
     if len(scores) < 1:
         print(
             "No scores provided. Usage: python3 ft_score_analytics.py"
