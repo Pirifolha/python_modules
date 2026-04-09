@@ -1,34 +1,31 @@
 #!/usr/bin/env python3
 
 import random
+from typing import List, Set
 
 
 class Player:
-    def __init__(self, name, achievement):
+    def __init__(self, name: str, achievement: Set[str]) -> None:
         self.name = name
         self.achievement = achievement
 
-    def create_set(self, len, achievements):
-        tmp_list = self.achievement
-        i = 0
-        while i < len:
-            temp = random.randrange(0, len)
-            tmp_list.append(achievements[temp])
-            i += 1
-        self.achievement = set(tmp_list)
+    def create_set(self, length: int, achievements: List[str]) -> None:
+        temp: List[str] = random.sample(achievements, length)
+        for t in temp:
+            self.achievement.add(t)
 
-    def show(self):
+    def show(self) -> None:
         print(f"Player {self.name}: {self.achievement}")
 
-    def show_common(self, *others):
+    def show_common(self, *others: Set[str]) -> None:
         print("\nCommon achievements: "
               f"{self.achievement.intersection(*others)}\n")
 
-    def show_unique(self, *others):
+    def show_unique(self, *others: Set[str]) -> None:
         print(f"Only {self.name} has:"
               f" {self.achievement.difference(*others)}\n")
 
-    def show_missing(self, achievements):
+    def show_missing(self, achievements: List[str]) -> None:
         print(
             f"{self.name} is missing: "
             f"{set(achievements).difference(self.achievement)}"
@@ -36,7 +33,7 @@ class Player:
 
 
 def gen_player_achievements() -> None:
-    achievements: list = [
+    achievements: List[str] = [
         "Crafting Genius",
         "Strategist",
         "World Savior",
@@ -53,7 +50,7 @@ def gen_player_achievements() -> None:
     ]
 
     names = ["Bob", "Alice", "Charlie", "Dylan"]
-    players = [Player(name, []) for name in names]
+    players = [Player(name, set()) for name in names]
     for player in players:
         player.create_set(random.randint(1, 13), achievements)
         player.show()
