@@ -12,7 +12,7 @@ def main() -> None:
     print("== Cyber Archives Recovery ===")
     for arg in args[1:]:
         try:
-            print(f"Acessing file {arg}")
+            print(f"Acessing file '{arg}'")
             temp: IO[str]
             with open(arg, "r+") as temp:
                 content = temp.read()
@@ -24,11 +24,8 @@ def main() -> None:
                 temp = open(arg, "r")
                 print(temp.read())
                 print(f"File '{arg}' closed.")
-        except FileNotFoundError as e:
-            print(f"Error opening file '{arg}': {e}")
-            return
-        except PermissionError as e:
-            print(f"Error opening file '{arg}': {e}")
+        except (FileNotFoundError, PermissionError) as e:
+            print(f"Error opening file '{arg}': {e}", file=sys.stderr)
             return
         print("Transforming data:")
         file: IO[str]
