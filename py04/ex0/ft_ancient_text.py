@@ -24,9 +24,11 @@ def main() -> None:
             temp = open(arg, "r")
             print(temp.read())
             temp.close()
-            print(f"File {arg} closed.")
+            print(f"File '{arg}' closed.")
         except FileNotFoundError as e:
-            print(f"Caught FileNotFoundError: {e}")
+            print(f"Error opening file '{arg}': {e}")
+        except PermissionError as e:
+            print(f"Error opening file '{arg}': {e}")
 
 
 if __name__ == "__main__":
