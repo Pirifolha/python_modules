@@ -14,10 +14,11 @@ def main() -> None:
         try:
             print(f"Acessing file '{arg}'")
             temp: IO[str]
-            with open(arg, "r+") as temp:
-                content = temp.read()
-                temp.seek(0)
-                temp.write("---\n\n" + content)
+            temp = open(arg, "r+")
+            content = temp.read()
+            temp.seek(0)
+            temp.write("---\n\n" + content)
+            temp.close()
             temp = open(arg, "a")
             temp.write("\n\n---")
             temp.close()

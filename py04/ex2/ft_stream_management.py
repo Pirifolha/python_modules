@@ -14,16 +14,18 @@ def main() -> None:
         try:
             print(f"Acessing file '{arg}'")
             temp: IO[str]
-            with open(arg, "r+") as temp:
-                content = temp.read()
-                temp.seek(0)
-                temp.write("---\n\n" + content)
-            with open(arg, "a") as temp:
-                temp.write("\n\n---")
-                temp.close()
-                temp = open(arg, "r")
-                print(temp.read())
-                print(f"File '{arg}' closed.")
+            temp = open(arg, "r+")
+            content = temp.read()
+            temp.seek(0)
+            temp.write("---\n\n" + content)
+            temp.close()
+            temp = open(arg, "a")
+            temp.write("\n\n---")
+            temp.close()
+            temp = open(arg, "r")
+            print(temp.read())
+            temp.close()
+            print(f"File '{arg}' closed.")
         except (FileNotFoundError, PermissionError) as e:
             print(f"Error opening file '{arg}': {e}", file=sys.stderr)
             return
@@ -31,16 +33,18 @@ def main() -> None:
         file: IO[str]
         lines = []
         new_lines = []
-        with open(arg, "r") as file:
-            for line in file:
-                lines.append(line)
-        with open(arg, "r") as file:
-            for line in lines:
-                if line[0] == "\n" or line[0] == "-":
-                    print(line.rstrip("\n"))
-                else:
-                    new_lines.append(line.rstrip("\n") + "#\n")
-                    print(line.rstrip("\n") + "#")
+        file = open(arg, "r")
+        for line in file:
+            lines.append(line)
+        file.close()
+        file = open(arg, "r")
+        for line in lines:
+            if line[0] == "\n" or line[0] == "-":
+                print(line.rstrip("\n"))
+            else:
+                new_lines.append(line.rstrip("\n") + "#\n")
+                print(line.rstrip("\n") + "#")
+        file.close()
         print("Enter new file name (or empty): ", end="", flush=True)
         new_name: str = sys.stdin.readline()
         if new_name.strip():
@@ -49,9 +53,10 @@ def main() -> None:
             except (FileNotFoundError, PermissionError) as e:
                 print(f"Error opening file '{arg}': {e}", file=sys.stderr)
                 return print("Not saving data.")
-            with open(new_name, "w") as file:
-                for line in new_lines:
-                    file.write(line)
+            file = open(new_name, "w")
+            for line in new_lines:
+                file.write(line)
+            file.close()
             print(
                 f"Saving data to '{new_name.rstrip('\n')}'\n"
                 f"Data saved to '{new_name.rstrip('\n')}'"
