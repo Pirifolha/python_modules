@@ -9,11 +9,6 @@ class ImproperError(Exception):
         super().__init__(message)
 
 
-class DataStreamError(Exception):
-    def __init__(self, message="Data stream error:"):
-        super().__init__(message)
-
-
 class DataProcessor(ABC):
 
     def __init__(self):
