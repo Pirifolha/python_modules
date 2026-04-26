@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 
-import ex0.classes as c
+from ex0.classes import CreatureFactory, FlameFactory, AquaFactory
 
 
-def test_factories(factory: c.CreatureFactory) -> None:
+def test_factories(factory: CreatureFactory) -> None:
 
     base = factory.create_base()
     evolved = factory.create_evolved()
@@ -15,7 +15,7 @@ def test_factories(factory: c.CreatureFactory) -> None:
     print(evolved.attack())
 
 
-def fight(fire: c.CreatureFactory, aqua: c.CreatureFactory) -> None:
+def fight(fire: CreatureFactory, aqua: CreatureFactory) -> None:
     f_base = fire.create_base()
     a_base = aqua.create_base()
 
@@ -29,8 +29,8 @@ def fight(fire: c.CreatureFactory, aqua: c.CreatureFactory) -> None:
 
 
 if __name__ == "__main__":
-    flame_factory = c.FlameFactory()
-    aqua_factory = c.AquaFactory()
+    flame_factory = FlameFactory()
+    aqua_factory = AquaFactory()
     test_factories(flame_factory)
     print("")
     test_factories(aqua_factory)
