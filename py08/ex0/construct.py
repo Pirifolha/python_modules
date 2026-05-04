@@ -15,9 +15,9 @@ def neg_venv() -> None:
         "To enter the cosntruct, run:\n"
         "python -m venv matrix_env\n"
         "source matrix_env/bin/activate # On Unix\n"
-        r"matrix_env\Scripts\activate # On Windows\n"
+        r"matrix_env\Scripts\activate # On Windows"
     )
-    print("Then run this program again")
+    print("\nThen run this program again")
 
 
 def pos_venv() -> None:
