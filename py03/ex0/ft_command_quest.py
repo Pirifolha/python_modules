@@ -15,7 +15,7 @@ def main() -> None:
             n = 1
             print(f"Argument {sys.argv.index(argument)}: {argument}")
             n += 1
-    print(f"Total arguments {args}\n")
+    print(f"Total arguments: {args}\n")
 
 
 if __name__ == "__main__":

@@ -45,20 +45,22 @@ def main() -> None:
         v = inventory[key]
         percentage = round(v / total * 100)
         print(f"Item {key} represents: {percentage}%")
-    max: int = 0
+    max_value: int = 0
+    max_name: str = ""
     for n in inventory:
         t_int: int = inventory[n]
-        if t_int > max:
-            max = t_int
+        if t_int > max_value:
+            max_value = t_int
             max_name = n
-    print(f"Item most abundant: {max_name} with quantity {max}")
-    min: int = max
+    print(f"Item most abundant: {max_name} with quantity {max_value}")
+    min_value: int = max_value
+    min_name: str = ""
     for i in inventory:
         tmp_int: int = inventory[i]
-        if tmp_int < min:
-            min = tmp_int
+        if tmp_int < min_value:
+            min_value = tmp_int
             min_name = i
-    print(f"Item most abundant: {min_name} with quantity {min}")
+    print(f"Item least abundant: {min_name} with quantity {min_value}")
     inventory.update({"magic_item": 2})
     print(f"Updated inventory: {inventory}")
 
