@@ -29,7 +29,7 @@ def main() -> None:
             try:
                 inventory[key] = int(value)
             except ValueError as e:
-                print(f"Quantity error for 'key': {e}")
+                print(f"Quantity error for '{key}' {e}")
         except ParameterError:
             print(f"Error - invalid parameter {temp[0]}")
         except DuplicateError:
@@ -52,7 +52,10 @@ def main() -> None:
         if t_int > max_value:
             max_value = t_int
             max_name = n
-    print(f"Item most abundant: {max_name} with quantity {max_value}")
+    if len(inventory) > 0:
+        print(f"Item most abundant: {max_name} with quantity {max_value}")
+    else:
+        print("Item most abundant: None")
     min_value: int = max_value
     min_name: str = ""
     for i in inventory:
@@ -60,7 +63,12 @@ def main() -> None:
         if tmp_int < min_value:
             min_value = tmp_int
             min_name = i
-    print(f"Item least abundant: {min_name} with quantity {min_value}")
+        else:
+            min_name = i
+    if len(inventory) > 0:
+        print(f"Item least abundant: {min_name} with quantity {min_value}")
+    else:
+        print("Item least abundant: None")
     inventory.update({"magic_item": 2})
     print(f"Updated inventory: {inventory}")
 
