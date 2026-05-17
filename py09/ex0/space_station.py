@@ -46,11 +46,12 @@ def main() -> None:
             crew_size=26,
             power_level=72.3,
             oxygen_level=92.4,
+            last_maintenance=datetime.now(),
             is_operational=True,
             notes="Station successfully created!",
         )
-    except ValidationError:
-        print("Input should be less than or equal to 20")
+    except ValueError as error:
+        print(error)
 
 
 if __name__ == "__main__":

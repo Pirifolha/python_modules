@@ -25,29 +25,19 @@ class AlienContact(BaseModel):
 
     @model_validator(mode="after")
     def checks(self):
-        try:
-            if self.contact_id[:2] != "AC":
-                raise ValueError()
-        except ValueError:
-            print("Contact id must start with 'AC'")
-        try:
-            if self.contact_type == ContactType.physical:
-                if self.is_verified is False:
-                    raise ValueError()
-        except ValueError:
-            print("Physical contact reports must be verfied")
-        try:
-            if self.contact_type == ContactType.telepathic:
-                if self.witness_count < 3:
-                    raise ValueError()
-        except ValueError:
-            print("Telepathic contact requires at leasst 3 witnesses")
-        try:
-            if self.signal_strength > 7.0:
-                if not self.message_received:
-                    raise ValueError()
-        except ValueError:
-            print("Strong signals should include messages")
+        if self.contact_id[:2] != "AC":
+            raise ValueError("Contact id must start with 'AC'")
+        if self.contact_type == ContactType.physical:
+            if self.is_verified is False:
+                raise ValueError("Physical contact reports must be verfied")
+        if self.contact_type == ContactType.telepathic:
+            if self.witness_count < 3:
+                raise ValueError(
+                    "Telepathic contact requires at least 3 witnesses"
+                )
+        if self.signal_strength > 7.0:
+            if not self.message_received:
+                raise ValueError("Strong signals should include messages")
         return self
 
 
@@ -59,29 +49,35 @@ valid_alien = AlienContact(
     signal_strength=8.5,
     duration_minutes=45,
     witness_count=5,
-    message_received="Greetings from Zeta Reticuli"
+    message_received="Greetings from Zeta Reticuli",
 )
 
-print("Alien Contact Log Validation")
-print("===================================")
-print("Valid contact report:")
-print(f"ID: {valid_alien.contact_id}")
-print(f"Type: {valid_alien.contact_type.name}")
-print(f"Location: {valid_alien.location}")
-print(f"Signal: {valid_alien.signal_strength}/10")
-print(f"Duration: {valid_alien.duration_minutes} minutes")
-print(f"Witnesses: {valid_alien.duration_minutes}")
-print(f"Message: {valid_alien.message_received}")
+def main():
 
-print("\n===================================")
-print("Expected validiton error:")
-AlienContact(
-    contact_id="AC_2024_001",
-    timestamp=datetime.now(),
-    location="Area 51, Nevada",
-    contact_type=4,
-    signal_strength=8.5,
-    duration_minutes=45,
-    witness_count=2,
-    message_received="Greetings from Zeta Reticuli"
-)
+    print("Alien Contact Log Validation")
+    print("===================================")
+    print("Valid contact report:")
+    print(f"ID: {valid_alien.contact_id}")
+    print(f"Type: {valid_alien.contact_type.name}")
+    print(f"Location: {valid_alien.location}")
+    print(f"Signal: {valid_alien.signal_strength}/10")
+    print(f"Duration: {valid_alien.duration_minutes} minutes")
+    print(f"Witnesses: {valid_alien.duration_minutes}")
+    print(f"Message: {valid_alien.message_received}")
+
+    print("\n===================================")
+    print("Expected validiton error:")
+    try:
+        AlienContact(
+        contact_id="AC_2024_001",
+        timestamp=datetime.now(),
+        location="Area 51, Nevada",
+        contact_type=4,
+        signal_strength=8.5,
+        duration_minutes=45,
+        witness_count=2,
+        message_received="Greetings from Zeta Reticuli",
+    )
+        
+    except Validat
+
