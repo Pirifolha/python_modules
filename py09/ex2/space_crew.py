@@ -40,10 +40,7 @@ class SpaceMission(BaseModel):
 
         has_superior = False
         for member in self.crew:
-            if (
-                member.rank == Rank.commander
-                or member.rank == Rank.captain
-            ):
+            if member.rank == Rank.commander or member.rank == Rank.captain:
                 has_superior = True
 
         if has_superior is False:
@@ -59,7 +56,8 @@ class SpaceMission(BaseModel):
 
             if (experienced / len(self.crew) * 100) < 50:
                 raise ValueError(
-                    "Long mission (> 365 days) need 50% experienced crew (5+ years)"
+                    "Long mission (> 365 days) need 50% experienced crew "
+                    "(5+ years)"
                 )
 
         for member in self.crew:

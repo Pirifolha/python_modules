@@ -52,6 +52,7 @@ valid_alien = AlienContact(
     message_received="Greetings from Zeta Reticuli",
 )
 
+
 def main():
 
     print("Alien Contact Log Validation")
@@ -69,15 +70,19 @@ def main():
     print("Expected validiton error:")
     try:
         AlienContact(
-        contact_id="AC_2024_001",
-        timestamp=datetime.now(),
-        location="Area 51, Nevada",
-        contact_type=4,
-        signal_strength=8.5,
-        duration_minutes=45,
-        witness_count=2,
-        message_received="Greetings from Zeta Reticuli",
-    )
-        
-    except Validat
+            contact_id="AC_2024_001",
+            timestamp=datetime.now(),
+            location="Area 51, Nevada",
+            contact_type=4,
+            signal_strength=8.5,
+            duration_minutes=45,
+            witness_count=2,
+            message_received="Greetings from Zeta Reticuli",
+        )
 
+    except ValueError as error:
+        print(error)
+
+
+if __name__ == "__main__":
+    main()
