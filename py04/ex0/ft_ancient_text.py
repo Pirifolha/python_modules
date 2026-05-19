@@ -13,17 +13,11 @@ def main() -> None:
     for arg in args[1:]:
         try:
             print(f"Acessing file '{arg}'")
-            temp: IO[str]
-            temp = open(arg, "r+")
+            temp: IO[str] = open(arg, "r")
             content = temp.read()
-            temp.seek(0)
-            temp.write("---\n\n" + content)
-            temp.close()
-            temp = open(arg, "a")
-            temp.write("\n\n---")
-            temp.close()
-            temp = open(arg, "r")
-            print(temp.read())
+            print("---\n")
+            print(content)
+            print("\n---")
             temp.close()
             print(f"File '{arg}' closed.")
         except (FileNotFoundError, PermissionError) as e:
