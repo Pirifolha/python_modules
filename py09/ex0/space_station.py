@@ -1,7 +1,18 @@
 #!/usr/bin/env python3
 
-from pydantic import BaseModel, Field
 from datetime import datetime
+
+try:
+    from pydantic import BaseModel, Field, ValidationError
+except ModuleNotFoundError:
+    print(
+        "\nError! Missing module: pydantic\n",
+        "Create a venv, activate it and install the ",
+        'module using: pip install "pydantic>=2.0"\n\n',
+        "Exiting.",
+        sep="",
+    )
+    exit()
 
 
 class SpaceStation(BaseModel):
@@ -50,8 +61,9 @@ def main() -> None:
             is_operational=True,
             notes="Station successfully created!",
         )
-    except ValueError as error:
-        print(error)
+    except ValidationError as error:
+        for issue in error.erros():
+            print(issue['msg'])
 
 
 if __name__ == "__main__":
