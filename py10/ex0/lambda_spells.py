@@ -55,7 +55,8 @@ def main() -> None:
     print(
         f"{sorted_artifacts[-1]['name']} ({sorted_artifacts[-1]['power']} "
         f"power) comes after "
-        f"{sorted_artifacts[0]['name']} ({sorted_artifacts[0]['power']} power)\n"
+        f"{sorted_artifacts[0]['name']} ({sorted_artifacts[0]['power']} power)"
+        "\n"
     )
 
     print("Testing spell transformer...")
