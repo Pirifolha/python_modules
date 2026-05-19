@@ -1,8 +1,19 @@
 #!/usr/bin/env python3
 
-from pydantic import BaseModel, Field, model_validator
 from enum import Enum
 from datetime import datetime
+
+try:
+    from pydantic import BaseModel, Field, ValidationError, model_validator
+except ModuleNotFoundError:
+    print(
+        "\nError! Missing module: pydantic\n",
+        "Create a venv, activate it and install the ",
+        'module using: pip install "pydantic>=2.0"\n\n',
+        "Exiting.",
+        sep="",
+    )
+    exit()
 
 
 class ContactType(Enum):
@@ -80,8 +91,9 @@ def main():
             message_received="Greetings from Zeta Reticuli",
         )
 
-    except ValueError as error:
-        print(error)
+    except ValidationError as error:
+        for issue in error.errors():
+            print(issue["msg"])
 
 
 if __name__ == "__main__":

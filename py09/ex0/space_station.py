@@ -62,7 +62,7 @@ def main() -> None:
             notes="Station successfully created!",
         )
     except ValidationError as error:
-        for issue in error.erros():
+        for issue in error.errors():
             print(issue['msg'])
 
 
