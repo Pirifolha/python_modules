@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 
 import sys
-from typing import IO
 
 
 def main() -> None:
@@ -11,7 +10,7 @@ def main() -> None:
     print("== Cyber Archives Recovery ===")
     try:
         print(f"Acessing file '{sys.argv[1]}'")
-        f: IO[str] = open(sys.argv[1], "r+")
+        f = open(sys.argv[1], "r+")
     except (FileNotFoundError, PermissionError) as e:
         print(f"Error opening file '{sys.argv[1]}': {e}", file=sys.stderr)
     else:

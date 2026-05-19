@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 
 import sys
-from typing import IO
 
 
 def main() -> None:
@@ -13,7 +12,7 @@ def main() -> None:
     for arg in args[1:]:
         try:
             print(f"Acessing file '{arg}'")
-            temp: IO[str] = open(arg, "r")
+            temp = open(arg, "r")
             content = temp.read()
             print("---\n")
             print(content)

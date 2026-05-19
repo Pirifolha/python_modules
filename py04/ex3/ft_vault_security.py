@@ -24,4 +24,4 @@ if __name__ == "__main__":
     print(secure_archive("test.txt", "r", "asadasdds"))
 
     print("\nUsing'secure_archive' to write previous content to a new file:")
-    print(secure_archive("test.txt", "w", "jhello"))
+    print(secure_archive("test.txt", "w", "hello"))
