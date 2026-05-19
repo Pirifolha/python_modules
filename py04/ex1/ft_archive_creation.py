@@ -31,7 +31,7 @@ def main() -> None:
         print("---")
         try:
             filename = input("Enter new file name (or empty): ")
-        except (EOFError):
+        except EOFError:
             print("Not saving data.")
             sys.exit(1)
         if not filename:
@@ -39,7 +39,7 @@ def main() -> None:
         else:
             print(f"Saving data to '{filename}'")
             try:
-                file = open(filename, 'w')
+                file = open(filename, "w")
                 file.write(content)
                 file.close()
                 print(f"Data saved in file '{filename}'.")
