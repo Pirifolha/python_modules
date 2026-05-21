@@ -19,7 +19,7 @@ def main() -> None:
             print("\n---")
             temp.close()
             print(f"File '{arg}' closed.")
-        except (FileNotFoundError, PermissionError) as e:
+        except (OSError, UnicodeDecodeError) as e:
             print(f"Error opening file '{arg}': {e}", file=sys.stderr)
             return
 
