@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 
-from alchemy import elements
+import alchemy
 
 if __name__ == "__main__":
     print("=== Alembic 4 ===")
-    print(elements.create_air())
-    print(elements.create_earth())
+    print(alchemy.create_air())
+    print(alchemy.create_earth())
