@@ -1,14 +1,15 @@
 #!/usr/bin/env python3
 
 from abc import ABC, abstractmethod
-import ex0.classes as c
-import ex1.capabilities as cap
 
 
 class InvalidStrategy(Exception):
     def __init__(self, creature, strategy_name: str = "strategy"):
         creature_name = creature.__class__.__name__
-        super().__init__(f"Invalid Creature '{creature_name}' for this {strategy_name} strategy")
+        super().__init__(
+            f"Invalid Creature '{creature_name}' "
+            f"for this {strategy_name} strategy"
+        )
 
 
 class BattleStrategy(ABC):
