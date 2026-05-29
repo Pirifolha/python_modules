@@ -52,9 +52,14 @@ if __name__ == "__main__":
         (transform_factory, aggressive_strategy),
     ]
 
-    print("Tournament 0 (basic)\n[ (Flameling+Normal), (Healing+Defensive) ]")
+    print("Tournament 0 (basic)\n[(Flameling+Normal), (Healing+Defensive)]")
     battle(first_tournament)
-    print("\nTournament 1 (error)\n[ (Flameling+Aggressive), (Healing+Defensive) ]")
+    print(
+        "\nTournament 1 (error)\n[(Flameling+Aggressive), (Healing+Defensive)]"
+    )
     battle(second_tournament)
-    print("\nTournament 2 (multiple)\n[ (Aquabub+Normal), (Healing+Defensive), (Transform+Aggressive) ]")
+    print(
+        "\nTournament 2 (multiple)\n[(Aquabub+Normal), "
+        "(Healing+Defensive), (Transform+Aggressive)]"
+    )
     battle(third_tournamnet)

@@ -29,10 +29,13 @@ def fight(fire: CreatureFactory, aqua: CreatureFactory) -> None:
 
 
 if __name__ == "__main__":
-    flame_factory = FlameFactory()
-    aqua_factory = AquaFactory()
-    test_factories(flame_factory)
-    print("")
-    test_factories(aqua_factory)
-    print("")
-    fight(flame_factory, aqua_factory)
+    try:
+        flame_factory = FlameFactory()
+        aqua_factory = AquaFactory()
+        test_factories(flame_factory)
+        print("")
+        test_factories(aqua_factory)
+        print("")
+        fight(flame_factory, aqua_factory)
+    except Exception as e:
+        print("Error:", e)
