@@ -39,8 +39,11 @@ def test_transform(factory: c.CreatureFactory) -> None:
 
 
 if __name__ == "__main__":
-    healing_factory = HealingCreatureFactory()
-    transform_factory = TransformCreatureFactory()
-    test_healing(healing_factory)
-    print("")
-    test_transform(transform_factory)
+    try:
+        healing_factory = HealingCreatureFactory()
+        transform_factory = TransformCreatureFactory()
+        test_healing(healing_factory)
+        print("")
+        test_transform(transform_factory)
+    except Exception as e:
+        print("Error", e)

@@ -9,7 +9,7 @@ def neg_venv() -> None:
     print("\nMATRIX STATUS: You're still plugged in\n")
     print(
         f"Current Python: {sys.executable}\n"
-        f"Virtual Enviroment: None detected"
+        f"Virtual Enviroment: None detected\n"
         "WARNING: You're in the global environment!\n"
         "The machines can see everything you install.\n"
         "To enter the cosntruct, run:\n"

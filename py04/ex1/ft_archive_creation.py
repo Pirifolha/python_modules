@@ -11,7 +11,7 @@ def main() -> None:
     try:
         print(f"Acessing file '{sys.argv[1]}'")
         f = open(sys.argv[1], "r+")
-    except (FileNotFoundError, PermissionError) as e:
+    except (OSError, UnicodeDecodeError) as e:
         print(f"Error opening file '{sys.argv[1]}': {e}", file=sys.stderr)
     else:
         content = f.read()

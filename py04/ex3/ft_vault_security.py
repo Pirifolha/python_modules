@@ -8,7 +8,7 @@ def secure_archive(file: str, action: str, content: str) -> tuple[bool, str]:
                 temp.write(content)
             elif action == "r":
                 return True, temp.read()
-    except (FileNotFoundError, PermissionError) as e:
+    except (OSError, UnicodeDecodeError) as e:
         return False, f"Error opening file '{file}': {e}"
     return True, "Content successfully written to file"
 
