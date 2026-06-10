@@ -3,7 +3,7 @@
 from datetime import datetime
 
 try:
-    from pydantic import BaseModel, Field, ValidationError
+    from pydantic import BaseModel, Field, ValidationError  # type: ignore
 except ModuleNotFoundError:
     print(
         "\nError! Missing module: pydantic\n",
@@ -63,7 +63,7 @@ def main() -> None:
         )
     except ValidationError as error:
         for issue in error.errors():
-            print(issue['msg'])
+            print(issue["msg"])
 
 
 if __name__ == "__main__":

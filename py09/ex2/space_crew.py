@@ -4,7 +4,12 @@ from enum import Enum
 from datetime import datetime
 
 try:
-    from pydantic import BaseModel, Field, ValidationError, model_validator
+    from pydantic import (  # type: ignore
+        BaseModel,
+        Field,
+        ValidationError,
+        model_validator,
+    )
 except ModuleNotFoundError:
     print(
         "\nError! Missing module: pydantic\n",
@@ -60,7 +65,7 @@ class SpaceMission(BaseModel):
             )
 
         if self.duration_days > 365:
-            experienced: int = 0
+            experienced = 0
             for member in self.crew:
                 if member.years_experience >= 5:
                     experienced += 1

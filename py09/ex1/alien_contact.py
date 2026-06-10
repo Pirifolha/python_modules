@@ -4,7 +4,12 @@ from enum import Enum
 from datetime import datetime
 
 try:
-    from pydantic import BaseModel, Field, ValidationError, model_validator
+    from pydantic import (  # type: ignore
+        BaseModel,
+        Field,
+        ValidationError,
+        model_validator,
+    )
 except ModuleNotFoundError:
     print(
         "\nError! Missing module: pydantic\n",
