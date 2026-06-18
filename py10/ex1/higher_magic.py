@@ -23,8 +23,8 @@ def spell_combiner(spell1: Callable, spell2: Callable) -> Callable:
 
 def power_amplifier(base_spell: Callable, multiplier: int) -> Callable:
 
-    def amplified(target, power) -> Callable:
-        return base_spell(target, power * multiplier)
+    def amplified(*args, **kwargs) -> int:
+        return base_spell(*args, **kwargs) * multiplier
 
     return amplified
 
@@ -52,25 +52,35 @@ def spell_sequence(spells: list[Callable]) -> Callable:
     return call_spell
 
 
-def test(target, power):
-    if power > 7:
-        return True
-    else:
-        return False
+def has_enough_power(target: str, power: int) -> bool:
+    return power > 7
+
+
+def damage_spell(power: int) -> int:
+    return power
 
 
 def main() -> None:
-    power = 30
+    power = 10
     combined = spell_combiner(heal, attack)
-    # mega_heal = power_amplifier(heal, power)
-    # cond = conditional_caster(test, heal)
-    # seq = spell_sequence([heal, attack])
+    mega_damage = power_amplifier(damage_spell, 3)
+    original_result = damage_spell(power)
+    amplified_result = mega_damage(power)
+    cond = conditional_caster(has_enough_power, heal)
+    seq = spell_sequence([heal, attack])
 
     print("\nTesting spell combiner...")
-    print(f"Combined spell result: {', '. join(combined("Dragon", 30))}")
+    print(f"Combined spell result: {', '.join(combined('Dragon', power))}")
 
     print("\nTesting power amplifier...")
-    print(f"Original:{power}, Amplified: {power * 3}")
+    print(f"Original: {original_result}, Amplified: {amplified_result}")
+
+    print("\nTesting conditional caster...")
+    print(cond("Dragon", power))
+    print(cond("Dragon", 3))
+
+    print("\nTesting spell sequence...")
+    print(seq("Dragon", power))
 
 
 if __name__ == "__main__":

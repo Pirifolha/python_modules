@@ -3,7 +3,7 @@
 from collections.abc import Callable
 
 
-def magic_counter() -> Callable:
+def mage_counter() -> Callable:
     x = 0
 
     def counter() -> int:
@@ -14,7 +14,7 @@ def magic_counter() -> Callable:
     return counter
 
 
-def spell_acccumulator(initial_power: int) -> Callable:
+def spell_accumulator(initial_power: int) -> Callable:
     total_power = initial_power
 
     def power(add: int) -> int:
@@ -47,8 +47,8 @@ def memory_vault() -> dict[str, Callable]:
 
 if __name__ == "__main__":
     print("Testing mage counter...")
-    counter = magic_counter()
-    counter2 = magic_counter()
+    counter = mage_counter()
+    counter2 = mage_counter()
     for _ in range(3):
         print(f"counter call {_+1}:", counter())
 
@@ -56,7 +56,7 @@ if __name__ == "__main__":
         print(f"counter2 call {_+1}:", counter2())
 
     print("\nTesting spell accumulator...")
-    power = spell_acccumulator(5)
+    power = spell_accumulator(5)
     print("Base 5, add 10:", power(10))
     print("Base 5, add 20:", power(20))
 

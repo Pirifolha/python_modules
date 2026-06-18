@@ -9,7 +9,7 @@ def artifact_sorter(artifacts: list[dict]) -> list[dict]:
 
 
 def power_filter(mages: list[dict], min_power: int) -> list[dict]:
-    filtered_mages = list(filter(lambda x: x["power"] > min_power, mages))
+    filtered_mages = list(filter(lambda x: x["power"] >= min_power, mages))
     return filtered_mages
 
 
@@ -21,7 +21,9 @@ def spell_transformer(spells: list[str]) -> list[str]:
 def mage_stats(mages: list[dict]) -> dict:
     maximum: dict = max(mages, key=lambda x: x["power"])
     minimum: dict = min(mages, key=lambda x: x["power"])
-    average: float = sum(map(lambda x: x["power"], mages)) / len(mages)
+    average: float = round(
+        sum(map(lambda x: x["power"], mages)) / len(mages), 2
+    )
     ret_dict = {
         "max_power": maximum["power"],
         "min_power": minimum["power"],
@@ -64,4 +66,5 @@ def main() -> None:
     print(" ".join(transformed_spells))
 
 
-main()
+if __name__ == "__main__":
+    main()
